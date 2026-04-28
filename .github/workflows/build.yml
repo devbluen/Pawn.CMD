@@ -37,16 +37,21 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release .. -A Win32
+          cmake -DCMAKE_BUILD_TYPE=Release .. -G "Visual Studio 17 2022" -A Win32
           cmake --build . --config Release
+
+      - name: Prepare Artifacts
+        shell: pwsh
+        run: |
+          mkdir dist
+          copy "build/Release/pawncmd.dll" "dist/"
+          copy "src/Pawn.CMD.inc" "dist/"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: pawncmd-${{ env.PLUGIN_VERSION }}-win32
-          path: |
-            build/Release/pawncmd.dll
-            src/Pawn.CMD.inc
+          path: dist/
 
   build-linux-release:
     runs-on: ubuntu-latest
