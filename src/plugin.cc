@@ -25,26 +25,33 @@
 #include "main.h"
 
 bool Plugin::OnLoad() {
+
+  Log("debug 1");
   ReadConfig();
-
+  
+  Log("debug 2");
   RegisterNative<&Script::PC_Init>("PC_Init");
-
+  
+  Log("debug 3");
   RegisterNative<&Script::PC_RegAlias, false>("PC_RegAlias");
   RegisterNative<&Script::PC_SetFlags>("PC_SetFlags");
   RegisterNative<&Script::PC_GetFlags>("PC_GetFlags");
   RegisterNative<&Script::PC_RenameCommand>("PC_RenameCommand");
   RegisterNative<&Script::PC_CommandExists>("PC_CommandExists");
   RegisterNative<&Script::PC_DeleteCommand>("PC_DeleteCommand");
-
+  
+  Log("debug 4");
   RegisterNative<&Script::PC_GetCommandArray>("PC_GetCommandArray");
   RegisterNative<&Script::PC_GetAliasArray>("PC_GetAliasArray");
   RegisterNative<&Script::PC_GetArraySize>("PC_GetArraySize");
   RegisterNative<&Script::PC_GetCommandName>("PC_GetCommandName");
   RegisterNative<&Script::PC_FreeArray>("PC_FreeArray");
   
-  RegisterNative<&Script::PC_GetDescription>("PC_GetDescription");
+  Log("debug 5");
   RegisterNative<&Script::PC_SetDescription>("PC_SetDescription");
-
+  RegisterNative<&Script::PC_GetDescription>("PC_GetDescription");
+  
+  Log("debug 6");
   RegisterNative<&Script::PC_EmulateCommand>("PC_EmulateCommand");
 
   Log("\n\n"

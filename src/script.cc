@@ -183,8 +183,7 @@ bool Script::OnLoad() {
       init_flags_and_aliases_pubs_.push_back(MakePublic(public_name));
     } else if (std::regex_match(public_name, regex_public_cmd_flags_)) {
       init_flags_and_aliases_pubs_.push_front(MakePublic(public_name));
-    } else if (plugin.LegacyOpctSupport() &&
-               public_name == "OnPlayerCommandText") {
+    } else if (plugin.LegacyOpctSupport() && public_name == "OnPlayerCommandText") {
       opct_public_ = MakePublic(public_name, plugin.UseCaching());
     } else if (public_name == "OnPlayerCommandReceived") {
       opcr_public_ = MakePublic(public_name, plugin.UseCaching());
