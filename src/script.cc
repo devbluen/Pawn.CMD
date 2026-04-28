@@ -176,9 +176,10 @@ bool Script::OnLoad() {
     std::smatch match;
     if (std::regex_match(public_name, match, regex_public_cmd_name_)) {
       std::string cmd_name = PrepareCommandName(match[1].str());
-
       NewCommand(cmd_name, MakePublic(public_name, plugin.UseCaching()));
     } else if (std::regex_match(public_name, regex_public_cmd_alias_)) {
+      init_flags_and_aliases_pubs_.push_back(MakePublic(public_name));
+    } else if (std::regex_match(public_name, regex_public_cmd_desc_)) {
       init_flags_and_aliases_pubs_.push_back(MakePublic(public_name));
     } else if (std::regex_match(public_name, regex_public_cmd_flags_)) {
       init_flags_and_aliases_pubs_.push_front(MakePublic(public_name));

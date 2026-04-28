@@ -84,26 +84,18 @@ class Script : public ptl::AbstractScript<Script> {
 
   bool OnLoad();
 
-  bool HandleCommand(cell playerid, const char *cmdtext, const std::string &cmd,
-                     const char *params);
-
-  void NewCommand(const std::string &name, const PublicPtr &pub,
-                  unsigned int flags = 0, bool is_alias = false);
+  bool HandleCommand(cell playerid, const char *cmdtext, const std::string &cmd, const char *params);
+  void NewCommand(const std::string &name, const PublicPtr &pub, unsigned int flags = 0, bool is_alias = false);
 
   const CommandPtr &GetCommand(const std::string &name, bool strict = false);
 
   cell DeleteCommand(const std::string &name);
-
   cell CommandExists(const std::string &name);
-
   cell NewCmdArray();
-
   cell NewAliasArray(const std::string &cmd_name);
 
   void DeleteArray(cell arr);
-
   const CmdArrayPtr &GetCmdArray(cell ptr);
-
   void InitFlagsAndAliases();
 
   static std::string PrepareCommandName(const std::string &name);
@@ -112,6 +104,7 @@ class Script : public ptl::AbstractScript<Script> {
   const std::regex regex_public_cmd_name_{R"(pc_cmd_(\w+))"};
   const std::regex regex_public_cmd_alias_{R"(pc_alias_\w+)"};
   const std::regex regex_public_cmd_flags_{R"(pc_flags_\w+)"};
+  const std::regex regex_public_cmd_desc_{R"(pc_desc_\w+)"};
 
   std::unordered_map<std::string, CommandPtr> cmds_;
   PublicPtr opct_public_;     // OnPlayerCommandText

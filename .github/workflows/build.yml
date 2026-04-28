@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release .. -G "Visual Studio 17 2022" -A Win32
+          cmake -DCMAKE_BUILD_TYPE=Release -DCONAN_ENV_COMPILER_VERSION=193 .. -G "Visual Studio 17 2022" -A Win32
           cmake --build . --config Release
 
       - name: Prepare Artifacts
