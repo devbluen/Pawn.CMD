@@ -26,13 +26,10 @@
 
 bool Plugin::OnLoad() {
 
-  Log("debug 1");
   ReadConfig();
   
-  Log("debug 2");
   RegisterNative<&Script::PC_Init>("PC_Init");
   
-  Log("debug 3");
   RegisterNative<&Script::PC_RegAlias, false>("PC_RegAlias");
   RegisterNative<&Script::PC_SetFlags>("PC_SetFlags");
   RegisterNative<&Script::PC_GetFlags>("PC_GetFlags");
@@ -40,36 +37,34 @@ bool Plugin::OnLoad() {
   RegisterNative<&Script::PC_CommandExists>("PC_CommandExists");
   RegisterNative<&Script::PC_DeleteCommand>("PC_DeleteCommand");
   
-  Log("debug 4");
   RegisterNative<&Script::PC_GetCommandArray>("PC_GetCommandArray");
   RegisterNative<&Script::PC_GetAliasArray>("PC_GetAliasArray");
   RegisterNative<&Script::PC_GetArraySize>("PC_GetArraySize");
   RegisterNative<&Script::PC_GetCommandName>("PC_GetCommandName");
   RegisterNative<&Script::PC_FreeArray>("PC_FreeArray");
   
-  Log("debug 5");
   RegisterNative<&Script::PC_SetDescription>("PC_SetDescription");
   RegisterNative<&Script::PC_GetDescription>("PC_GetDescription");
   
-  Log("debug 6");
   RegisterNative<&Script::PC_EmulateCommand>("PC_EmulateCommand");
 
   Log("\n\n"
-      "    | %s %s | open.mp | 2016 - %s"
-      "\n"
-      "    |-----------------------------------------"
-      "\n"
-      "    | Author and maintainer: katursis and devbluen"
-      "\n\n\n"
-      "    | Compiled: %s at %s"
-      "\n"
-      "    |----------------------------------------------------------"
-      "\n"
-      "    | Fork (Current): https://github.com/devbluen/%s/tree/omp"
-      "    | Original: https://github.com/katursis/%s/tree/omp"
-      "\n",
-      Name(), VersionAsString().c_str(), &__DATE__[7], __DATE__, __TIME__,
-      Name());
+    "    [*] --------------------------------------------------------\n"
+    "    [*]  _____                      ____  __  __ ____           \n"
+    "    [*] |  __ \\                     / ___||  \\/  |  _ \\        \n"
+    "    [*] | |__) |_ ___      _ _ __  | |    | |\\/| | | | |        \n"
+    "    [*] |  ___/ _` \\ \\ /\\ / / '_ \\ | |___ | |  | | |_| |       \n"
+    "    [*] | |  | (_| |\\ V  V /| | | | \\____||_|  |_|____/        \n"
+    "    [*] |_|   \\__,_| \\_/\\_/ |_| |_| v%s                    \n"
+    "    [*] --------------------------------------------------------\n"
+    "    [*]  Authors: katursis & devbluen                           \n"
+    "    [*]  Maintainer: devbluen                                   \n"
+    "    [*]  Cycle:   2016 - %s                                     \n"
+    "    [*] --------------------------------------------------------\n"
+    "    [*]  Built:   %s - %s                                       \n"
+    "    [*]  GitHub:  github.com/devbluen/%s                        \n"
+    "    [*] --------------------------------------------------------\n",
+    VersionAsString().c_str(), &__DATE__[7], __DATE__, __TIME__, Name());
 
   return true;
 }
