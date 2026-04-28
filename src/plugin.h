@@ -32,23 +32,17 @@ class Plugin : public ptl::AbstractPlugin<Plugin, Script, NativeParam> {
   int Version() { return PAWNCMD_VERSION; }
 
   bool OnLoad();
-
   bool LogAmxErrors();
 
   void OnUnload();
-
   void ReadConfig();
-
   void SaveConfig();
 
   bool CaseInsensitivity() const { return case_insensitivity_; }
-
   bool LegacyOpctSupport() const { return legacy_opct_support_; }
-
   bool UseCaching() const { return use_caching_; }
 
   std::string ToLower(const std::string &str);
-
   static void ProcessCommand(cell playerid, const char *cmdtext);
 
  private:

@@ -65,27 +65,19 @@ class PluginComponent final : public IComponent,
   PROVIDE_UID(0xa03b47c907a96c29);
 
   StringView componentName() const override;
-
   SemanticVersion componentVersion() const override;
 
   void onLoad(ICore *c) override;
-
   void onInit(IComponentList *components) override;
-
   void onAmxLoad(IPawnScript &script) override;
-
   void onAmxUnload(IPawnScript &script) override;
-
   void onFree(IComponent *component) override;
-
   void reset() override;
-
   void free() override;
 
   bool onPlayerCommandText(IPlayer &player, StringView message) override;
 
   static void PluginLogprintf(const char *fmt, ...);
-
   static ICore *&getCore();
 
  private:

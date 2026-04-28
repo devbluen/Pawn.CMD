@@ -41,6 +41,9 @@ bool Plugin::OnLoad() {
   RegisterNative<&Script::PC_GetArraySize>("PC_GetArraySize");
   RegisterNative<&Script::PC_GetCommandName>("PC_GetCommandName");
   RegisterNative<&Script::PC_FreeArray>("PC_FreeArray");
+  
+  RegisterNative<&Script::PC_GetDescription>("PC_GetDescription");
+  RegisterNative<&Script::PC_SetDescription>("PC_SetDescription");
 
   RegisterNative<&Script::PC_EmulateCommand>("PC_EmulateCommand");
 
@@ -49,13 +52,14 @@ bool Plugin::OnLoad() {
       "\n"
       "    |-----------------------------------------"
       "\n"
-      "    | Author and maintainer: katursis"
+      "    | Author and maintainer: katursis and devbluen"
       "\n\n\n"
       "    | Compiled: %s at %s"
       "\n"
       "    |----------------------------------------------------------"
       "\n"
-      "    | Repository: https://github.com/katursis/%s/tree/omp"
+      "    | Fork (Current): https://github.com/devbluen/%s/tree/omp"
+      "    | Original: https://github.com/katursis/%s/tree/omp"
       "\n",
       Name(), VersionAsString().c_str(), &__DATE__[7], __DATE__, __TIME__,
       Name());

@@ -113,12 +113,38 @@ cell Script::PC_GetAliasArray(std::string cmd_name) {
 }
 
 // native PC_GetArraySize(CmdArray:arr);
-cell Script::PC_GetArraySize(CmdArrayPtr arr) { return arr->size(); }
+cell Script::PC_GetArraySize(CmdArrayPtr arr) { 
+  return arr->size(); 
+}
 
 // native PC_GetCommandName(CmdArray:arr, index, dest[], size = sizeof dest);
-cell Script::PC_GetCommandName(CmdArrayPtr arr, cell index, cell *dest,
-                               cell size) {
+cell Script::PC_GetCommandName(CmdArrayPtr arr, cell index, cell *dest, cell size) {
   SetString(dest, arr->at(index), size);
+  return 1;
+}
+
+// native PC_SetDescription(const cmd[], const description[]);
+cell Script::PC_SetDescription(std::string cmd_name, std::string description) {
+  cmd_name = PrepareCommandName(cmd_name);
+
+  const auto &command = GetCommand(cmd_name);
+
+  for (const auto &item : cmds_) {
+    if (item.second->GetPublic() == command->GetPublic()) {
+      item.second->SetDescription(description);
+    }
+  }
+  return 1;
+}
+
+// native PC_GetDescription(const cmd[], dest[], maxlength = sizeof dest);
+cell Script::PC_GetDescription(std::string cmd_name, cell *dest, cell size) {
+
+  cmd_name = PrepareCommandName(cmd_name);
+  const auto &command = GetCommand(cmd_name);
+
+  if(command) 
+    SetString(dest, command->GetDescription(), size);
 
   return 1;
 }

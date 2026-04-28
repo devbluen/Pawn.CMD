@@ -33,17 +33,17 @@ class Command {
       : public_{pub}, flags_{flags}, is_alias_{is_alias} {}
 
   inline const PublicPtr &GetPublic() const { return public_; }
-
   inline unsigned int GetFlags() const { return flags_; }
-
   inline void SetFlags(unsigned int flags) { flags_ = flags; }
-
   inline bool IsAlias() const { return is_alias_; }
+  inline void SetDescription(const std::string &description) { description_ = description; }
+  inline const std::string &GetDescription() const { return description_; }
 
  private:
   PublicPtr public_;
   unsigned int flags_{};
   bool is_alias_{};
+  std::string description_{};
 };
 
 #endif  // PAWNCMD_COMMAND_H_

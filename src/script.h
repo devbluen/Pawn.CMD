@@ -70,6 +70,12 @@ class Script : public ptl::AbstractScript<Script> {
   // native PC_GetCommandName(CmdArray:arr, index, dest[], size = sizeof dest);
   cell PC_GetCommandName(CmdArrayPtr arr, cell index, cell *dest, cell size);
 
+  // native PC_GetDescription(const cmd[], dest[], maxlength = sizeof dest);
+  cell PC_GetDescription(std::string cmd_name, cell *dest, cell size);
+  
+  // native PC_SetDescription(const cmd[], const description[]);
+  cell PC_SetDescription(std::string cmd_name, std::string description);
+
   // native PC_FreeArray(&CmdArray:arr);
   cell PC_FreeArray(cell *arr);
 
