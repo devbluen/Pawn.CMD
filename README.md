@@ -1,5 +1,5 @@
 # Pawn.CMD
-🚀 Plugin-powered (component) command processor for open.mp (Open Multiplayer, OMP) server
+🫧 Plugin-powered (component) command processor for open.mp (Open Multiplayer, OMP) server
 ## Natives
 ```pawn
 native PC_RegAlias(const cmd[], const alias[], ...);
