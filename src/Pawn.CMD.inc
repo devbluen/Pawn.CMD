@@ -96,6 +96,9 @@
 
         #define CMD cmd
         #define COMMAND cmd
+        #define CMDD:%0(%1)(%2) \
+            desc:%0(%2) \
+            CMD:%0(%1)
 
         #define callcmd::%0(%1) \
             pc_cmd_%0(%1)

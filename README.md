@@ -8,6 +8,8 @@ native PC_GetFlags(const cmd[]);
 native PC_RenameCommand(const cmd[], const newname[]);
 native PC_CommandExists(const cmd[]);
 native PC_DeleteCommand(const cmd[]);
+native PC_SetDescription(const cmd[], const description[]);
+native PC_GetDescription(const cmd[], dest[], maxlength = sizeof dest);
 
 native CmdArray:PC_GetCommandArray();
 native CmdArray:PC_GetAliasArray(const cmd[]);
@@ -54,6 +56,39 @@ cmd:help(playerid, params[])
 }
 alias:help("commands", "cmds")
 ```
+
+## Using Descriptions
+You can add descriptions to your commands like this.
+```
+desc:test("this a test command")
+CMD:test(playerid) {
+  // code here
+  return 1;
+}
+
+description:test("this a test command")
+CMD:test(playerid) {
+  // code here
+  return 1;
+}
+
+CMDD:test(playerid)("this a test command") {
+  // code here
+  return 1;
+}
+```
+You can also change the descriptions in operation.
+```
+PC_SetDescription("test", "new description");
+```
+You can also get the description for a list of admin commands or something similar.
+```
+new description[32];
+PC_SetDescription("test", description);
+```
+> [!WARNING]
+> If you intend to capture the descriptions in OnGameModeInit, remember to set a 1-second delay before capturing. The plugin takes a while to capture the descriptions when the server is running, or use PC_Init to eliminate the delay.
+
 ## Using flags
 You can set flags for a command
 ```pawn
