@@ -60,19 +60,19 @@ alias:help("commands", "cmds")
 ## Using Descriptions
 You can add descriptions to your commands like this.
 ```
-desc:test("this a test command")
+desc:test("This is a test command.")
 CMD:test(playerid) {
   // code here
   return 1;
 }
 
-description:test("this a test command")
+description:test("This is a test command.")
 CMD:test(playerid) {
   // code here
   return 1;
 }
 
-CMDD:test(playerid)("this a test command") {
+CMDD:test(playerid)("This is a test command.") {
   // code here
   return 1;
 }
@@ -86,8 +86,14 @@ You can also get the description for a list of admin commands or something simil
 new description[32];
 PC_SetDescription("test", description);
 ```
-> [!WARNING]
-> If you intend to capture the descriptions in OnGameModeInit, remember to set a 1-second delay before capturing. The plugin takes a while to capture the descriptions when the server is running, or use PC_Init to eliminate the delay.
+> [!NOTE]
+> **Command Descriptions & Initialization**
+>
+> Command descriptions are processed asynchronously when the script loads. If you attempt to fetch descriptions inside `OnGameModeInit`, they may return as empty strings because the plugin is still indexing the data.
+>
+> To resolve this, you have two options:
+> 1. **Recommended:** Use the `PC_OnInit` callback. It is triggered only after the plugin has fully finished its internal setup.
+> 2. **Alternative:** If you must use `OnGameModeInit`, implement a **1,000ms delay** before calling `PC_GetDescription`.
 
 ## Using flags
 You can set flags for a command
