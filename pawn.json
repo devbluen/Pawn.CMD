@@ -1,22 +1,19 @@
 {
-    "user": "katursis",
-    "repo": "Pawn.CMD",
-    "include_path": "src",
-    "resources": [
-        {
-            "name": "^pawncmd-(.*)-linux.tar.gz$",
-            "platform": "linux",
-            "archive": true,
-            "plugins": ["pawncmd.so"]
-        },
-        {
-            "name": "^pawncmd-(.*)-win32.zip$",
-            "platform": "windows",
-            "archive": true,
-            "plugins": ["pawncmd.dll"]
-        }
-    ],
-    "runtime": {
-        "plugins": ["katursis/Pawn.CMD"]
-    }
+	"user": "katursis",
+	"repo": "Pawn.CMD",
+	"include_path": "src",
+	"resources": [
+		{ "name": "^pawncmd-(.*)-linux.tar.gz$", "platform": "linux", "archive": true, "plugins": ["pawncmd.so"] },
+		{ "name": "^pawncmd-(.*)-win32.zip$", "platform": "windows", "archive": true, "plugins": ["pawncmd.dll"] }
+	],
+	"runtime": { "plugins": ["katursis/Pawn.CMD"] },
+	"supports": ["samp", "openmp"],
+	"plugins": {
+		"windows": "pawncmd-*-win32.zip",
+		"linux": "pawncmd-*-linux.tar.gz"
+	},
+	"layout": {
+		"samp":   { "plugins": "pawncmd.*", "include": "." },
+		"openmp": { "components": "pawncmd.*", "include": "." }
+	}
 }

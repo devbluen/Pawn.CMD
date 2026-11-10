@@ -59,7 +59,7 @@ alias:help("commands", "cmds")
 
 ## Using Descriptions
 You can add descriptions to your commands like this.
-```
+```pawn
 desc:test("This is a test command.")
 CMD:test(playerid) {
   // code here
